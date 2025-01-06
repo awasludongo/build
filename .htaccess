@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /build/
+RewriteBase /img/
 
 # If the request is for an existing file or directory, serve it directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
